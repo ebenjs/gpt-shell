@@ -43,7 +43,7 @@ npm install
 
 ```bash
 sudo chmod +x index.js
-ln -s "$(pwd)/index.js" ~/bin/gptshell
+ln -s "$(pwd)/index.js" /usr/local/bin/gptshell
 ```
 
 ### Windows
