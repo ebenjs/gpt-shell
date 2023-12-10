@@ -1,12 +1,12 @@
 import winston from "winston";
-import chalk from 'chalk';
+import chalk from "chalk";
 
 const customResponseLoggerFormat = winston.format.printf(({ message }) => {
-  return `${chalk.magenta('[gpt-shell-response]')} : ${message}`;
+  return `${chalk.magenta("[gpt-shell-response]")} : ${message}`;
 });
 
 const customPromptLoggerFormat = winston.format.printf(({ message }) => {
-  return `${chalk.blueBright('[gpt-shell-prompt]')} : ${message}`;
+  return `${chalk.blueBright("[gpt-shell-prompt]")} : ${message}`;
 });
 
 const _logger = winston.createLogger({
