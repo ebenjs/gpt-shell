@@ -9,6 +9,16 @@ const customPromptLoggerFormat = winston.format.printf(({ message }) => {
   return `${chalk.blueBright("[gpt-shell-prompt]")} : ${message}`;
 });
 
+const customErrorLoggerFormat = winston.format.printf(({ message }) => {
+  return chalk.redBright("[error] : " + message);
+});
+
+const customPrefixedErrorLoggerFormat = (prefix) => {
+  return winston.format.printf(({ message }) => {
+    return chalk.redBright(prefix + message);
+  });
+};
+
 const _logger = winston.createLogger({
   level: "info",
   transports: [
@@ -35,8 +45,18 @@ const logResponse = (response) => {
   _logger.info(response);
 };
 
+const logError = (errors) => {
+  _logger.format = customErrorLoggerFormat;
+  _logger.error("Some configuration errors were found");
+  errors.forEach((error, index) => {
+    _logger.format = customPrefixedErrorLoggerFormat(`[${index}] `);
+    _logger.error(error);
+  });
+};
+
 export const logger = {
   default: _logger,
   logPrompt,
   logResponse,
+  logError,
 };
