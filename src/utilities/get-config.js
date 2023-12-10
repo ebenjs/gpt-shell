@@ -1,9 +1,30 @@
 import fs from "fs";
+import { getErrors, addError } from "./error-handling.js";
+
+const checkForRequiredEnvironmentVariables = (config) => {
+  if (!config.apikey) {
+    addError("OPENAI_API_KEY is not defined");
+  }
+
+  if (!config.model) {
+    addError("OPENAI_MODEL is not defined");
+  }
+
+  if (!config.url) {
+    addError("OPENAI_API_URL is not defined");
+  }
+
+  return !getErrors().length > 0;
+};
 
 export const getConfig = () => {
   if (fs.existsSync("./.gpt-shell-config.json")) {
     const config = JSON.parse(fs.readFileSync("./.gpt-shell-config.json"));
-    return config;
+    if (!checkForRequiredEnvironmentVariables(config)) {
+      return { status: "error", errors: getErrors() };
+    }
+
+    return { status: "success", config: config };
   }
 
   const config = {
@@ -12,5 +33,9 @@ export const getConfig = () => {
     url: process.env.OPENAI_API_URL,
   };
 
-  return config;
+  if (!checkForRequiredEnvironmentVariables(config)) {
+    return { status: "error", errors: getErrors() };
+  }
+
+  return { status: "success", config: config };
 };
