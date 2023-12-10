@@ -42,13 +42,20 @@ npm install
 ### Linux and MacOS
 
 ```bash
+cp .env.example .env
 sudo chmod +x index.js
 ln -s "$(pwd)/index.js" /usr/local/bin/gptshell
 ```
 
 ### Windows
 
-On windows you need to create a `gptshell.cmd` file in `C:\Windows\System32` with the following content:
+On windows, first you need to copy the `.env.example` file to `.env`.
+
+```cmd
+copy .env.example .env
+```
+
+Then you need to create a `gptshell.cmd` file in `C:\Windows\System32` with the following content:
 
 ```cmd
 @echo off
