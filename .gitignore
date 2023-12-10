@@ -1,0 +1,7 @@
+node_modules/
+.cache_ggshield
+
+*.log
+.pre-commit-config.yaml
+.env
+.gpt-shell-config.json

@@ -1,0 +1,29 @@
+{
+  "name": "@ebenjs/gpt-shell",
+  "version": "1.0.0",
+  "description": "Chat-GPT in the console",
+  "main": "index.js",
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "chat-gpt",
+    "ia",
+    "cmd",
+    "shell",
+    "bash"
+  ],
+  "author": "ebenjs",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0",
+    "yargs": "^17.7.2"
+  }
+}
