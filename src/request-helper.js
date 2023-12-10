@@ -19,20 +19,10 @@ export const sendOpenApiRequest = async (requestPrompt) => {
       messages: [{ role: "user", content: requestPrompt }],
     }),
   };
-  /*const response = await fetch(getConfig().url, requestOptions);
-  const data = await response.json();*/
-
-  // Simulate call to OpenAI API for development purposes
-  await new Promise((resolve) => setTimeout(resolve, 5000));
-  const fakeData = {
-    choices: [
-      {
-        message: { content: "Hello, how are you?" },
-      },
-    ],
-  };
+  const response = await fetch(getConfig().url, requestOptions);
+  const data = await response.json();
 
   clearInterval(animation);
   process.stdout.write("\r");
-  return fakeData;
+  return data;
 };
