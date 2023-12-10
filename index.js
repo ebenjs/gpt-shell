@@ -8,7 +8,7 @@ const isAtLeastOneOptionSpecified = (keys, args) => {
   return keys.some((key) => args[key] !== null);
 };
 
-const args = yargs(hideBin(process.argv))
+yargs(hideBin(process.argv))
   .strict(true)
   .command(
     "ask",
@@ -30,7 +30,7 @@ const args = yargs(hideBin(process.argv))
     },
     (argv) => {
       ask(argv.prompt);
-    }
+    },
   )
   .command(
     "config",
@@ -58,7 +58,7 @@ const args = yargs(hideBin(process.argv))
     },
     (argv) => {
       configure(argv);
-    }
+    },
   )
   .check((argv) => {
     if (!isAtLeastOneOptionSpecified(["apikey", "model", "url"], argv)) {

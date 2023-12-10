@@ -7,7 +7,7 @@ export const ask = (prompt) => {
   sendOpenApiRequest(prompt).then((data) => {
     logger.logResponse(data.choices[0].message.content);
   });
-}
+};
 
 export const configure = (args) => {
   const { apikey, model, url } = args;
@@ -20,4 +20,4 @@ export const configure = (args) => {
   fs.writeFileSync("./.gpt-shell-config.json", JSON.stringify(config, null, 2));
 
   logger.default.info(config);
-}
+};
