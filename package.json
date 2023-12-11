@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "format": "prettier --write .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "keywords": [
     "chat-gpt",
@@ -30,9 +31,11 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@vitest/coverage-istanbul": "^1.0.4",
     "eslint": "^8.55.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.1.0",
-    "prettier-eslint": "^16.1.2"
+    "prettier-eslint": "^16.1.2",
+    "vitest": "^1.0.4"
   }
 }

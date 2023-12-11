@@ -1,20 +1,24 @@
 import fs from "fs";
 import { getErrors, addError } from "./error-handling.js";
 
-const checkForRequiredEnvironmentVariables = (config) => {
+export const checkForRequiredEnvironmentVariables = (config) => {
+  let result = true;
   if (!config.apikey) {
+    result = false;
     addError("OPENAI_API_KEY is not defined");
   }
 
   if (!config.model) {
+    result = false;
     addError("OPENAI_MODEL is not defined");
   }
 
   if (!config.url) {
+    result = false;
     addError("OPENAI_API_URL is not defined");
   }
 
-  return !getErrors().length > 0;
+  return result;
 };
 
 export const getConfig = () => {
