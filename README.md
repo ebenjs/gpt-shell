@@ -1,7 +1,7 @@
 <!-- Badges section here. -->
 
 [![npm version](https://badge.fury.io/js/@ebenjs%2Fgpt-shell.svg)](https://badge.fury.io/js/@ebenjs%2Fgpt-shell)
-[![Build Status](https://travis-ci.org/ebenjs/gpt-shell.svg?branch=master)](https://travis-ci.org/ebenjs/gpt-shell)
+![Build Status](https://github.com/ebenjs/gpt-shell/actions/workflows/node.js.yml/badge.svg?branch=develop)
 [![Known Vulnerabilities](https://snyk.io/test/github/ebenjs/gpt-shell/badge.svg?targetFile=package.json)](https://snyk.io/test/github/ebenjs/gpt-shell?targetFile=package.json)
 [![License: Apache](https://img.shields.io/badge/License-Apache-yellow.svg)](https://opensource.org/licenses/Apache-2.0)
 
