@@ -29,7 +29,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN_SEMANTIC_RELEASE }}
+          token: ${{ secrets.GH_TOKEN_SEMANTIC_RELEASE }}
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
