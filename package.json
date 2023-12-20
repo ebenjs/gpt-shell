@@ -32,12 +32,14 @@
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@semantic-release/github": "^9.2.5",
     "@vercel/ncc": "^0.38.1",
     "@vitest/coverage-istanbul": "^1.0.4",
     "eslint": "^8.55.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier-eslint": "^16.1.2",
+    "semantic-release": "^22.0.12",
     "vitest": "^1.0.4"
   }
 }
