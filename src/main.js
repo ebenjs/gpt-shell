@@ -29,9 +29,12 @@ export const ask = (prompt) => {
         content: data.choices[0].message.content,
       });
       logger.logResponse(data.choices[0].message.content);
-      rl.question(`${appGlobalConsts.colorizedUserPromptPrefix} : `, (newPrompt) => {
-        newPrompt.toLowerCase() === 'exit' ? process.exit(0) : ask(newPrompt);
-      });
+      rl.question(
+        `${appGlobalConsts.colorizedUserPromptPrefix} : `,
+        (newPrompt) => {
+          newPrompt.toLowerCase() === "exit" ? process.exit(0) : ask(newPrompt);
+        },
+      );
     })
     .catch((error) => {
       logger.logError(JSON.parse(error.message));
