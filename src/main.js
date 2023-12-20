@@ -13,7 +13,7 @@ const rl = readline.createInterface({
 const chatHistory = [];
 
 let askFunctionCalledTimes = 0;
-export const ask = (prompt) => {
+export const ask = (prompt, interactive) => {
   chatHistory.push({
     role: "user",
     content: prompt,
@@ -29,10 +29,13 @@ export const ask = (prompt) => {
         content: data.choices[0].message.content,
       });
       logger.logResponse(data.choices[0].message.content);
+      if (!interactive) {
+        process.exit(0);
+      }
       rl.question(
         `${appGlobalConsts.colorizedUserPromptPrefix} : `,
         (newPrompt) => {
-          newPrompt.toLowerCase() === "exit" ? process.exit(0) : ask(newPrompt);
+          newPrompt.toLowerCase() === "exit" ? process.exit(0) : ask(newPrompt, interactive);
         },
       );
     })

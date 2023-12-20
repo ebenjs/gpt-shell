@@ -24,12 +24,12 @@ yargs(hideBin(process.argv))
         .option("interactive", {
           alias: "i",
           type: "boolean",
-          default: false,
+          default: true,
           describe: "Interactive mode",
         });
     },
     (argv) => {
-      ask(argv.prompt);
+      ask(argv.prompt, argv.interactive);
     },
   )
   .command(
