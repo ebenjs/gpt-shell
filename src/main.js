@@ -13,14 +13,14 @@ const rl = readline.createInterface({
 let askFunctionCalledTimes = 0;
 export const ask = (prompt) => {
   if (askFunctionCalledTimes === 0) {
-    logger.logPrompt(prompt + '\n');
+    logger.logPrompt(prompt);
   }
   askFunctionCalledTimes++;
   sendOpenApiRequest(prompt)
     .then((data) => {
       logger.logResponse(data.choices[0].message.content);
       rl.question(`${appGlobalConsts.colorizedUserPromptPrefix} : `, (newPrompt) => {
-        ask(newPrompt);
+        newPrompt.toLowerCase() === 'exit' ? process.exit(0) : ask(newPrompt);
       });
     })
     .catch((error) => {

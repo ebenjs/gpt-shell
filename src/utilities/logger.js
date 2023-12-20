@@ -3,7 +3,7 @@ import chalk from "chalk";
 import { appGlobalConsts } from "../consts/app-global-consts.js";
 
 const customResponseLoggerFormat = winston.format.printf(({ message }) => {
-  return `${appGlobalConsts.colorizedSystemResponsePrefix} : ${message}`;
+  return `\n${appGlobalConsts.colorizedSystemResponsePrefix} : ${message} \n`;
 });
 
 const customPromptLoggerFormat = winston.format.printf(({ message }) => {

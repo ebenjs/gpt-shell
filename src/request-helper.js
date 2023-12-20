@@ -1,6 +1,7 @@
 import { loadingAnimation } from "./utilities/animation.js";
 import { logger } from "./utilities/logger.js";
 import { getConfig } from "./utilities/get-config.js";
+import readline from "readline";
 
 export const sendOpenApiRequest = async (requestPrompt) => {
   const animation = loadingAnimation();
@@ -32,7 +33,9 @@ export const sendOpenApiRequest = async (requestPrompt) => {
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
      clearInterval(animation);
-    process.stdout.write("\r");
+    //  readline.cursorTo(process.stdout, 0);
+     process.stdout.clearLine();
+    // process.stdout.write("\r hi");
   
   const data = {
     choices: [
