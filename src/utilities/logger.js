@@ -1,16 +1,17 @@
 import winston from "winston";
 import chalk from "chalk";
+import { appGlobalConsts } from "../consts/app-global-consts.js";
 
 const customResponseLoggerFormat = winston.format.printf(({ message }) => {
-  return `${chalk.magenta("[gpt-shell-response]")} : ${message}`;
+  return `\n${appGlobalConsts.colorizedSystemResponsePrefix} : ${message} \n`;
 });
 
 const customPromptLoggerFormat = winston.format.printf(({ message }) => {
-  return `${chalk.blueBright("[gpt-shell-prompt]")} : ${message}`;
+  return `${appGlobalConsts.colorizedUserPromptPrefix} : ${message}`;
 });
 
 const customErrorLoggerFormat = winston.format.printf(({ message }) => {
-  return chalk.redBright("[error] : " + message);
+  return chalk.redBright(`${appGlobalConsts.systemErrorPrefix} : ${message}`);
 });
 
 const customPrefixedErrorLoggerFormat = (prefix) => {

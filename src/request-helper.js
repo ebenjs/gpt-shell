@@ -1,9 +1,7 @@
 import { loadingAnimation } from "./utilities/animation.js";
-import { logger } from "./utilities/logger.js";
 import { getConfig } from "./utilities/get-config.js";
 
-export const sendOpenApiRequest = async (requestPrompt) => {
-  logger.logPrompt(requestPrompt + "\n");
+export const sendOpenApiRequest = async (messages) => {
   const animation = loadingAnimation();
 
   const config = getConfig();
@@ -22,13 +20,13 @@ export const sendOpenApiRequest = async (requestPrompt) => {
     },
     body: JSON.stringify({
       model: getConfig().config.model,
-      messages: [{ role: "user", content: requestPrompt }],
+      messages: messages,
     }),
   };
   const response = await fetch(getConfig().config.url, requestOptions);
   const data = await response.json();
 
   clearInterval(animation);
-  process.stdout.write("\r");
+  process.stdout.clearLine();
   return data;
 };
