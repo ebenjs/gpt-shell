@@ -10,14 +10,24 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
+const chatHistory = [];
+
 let askFunctionCalledTimes = 0;
 export const ask = (prompt) => {
+  chatHistory.push({
+    role: "user",
+    content: prompt,
+  });
   if (askFunctionCalledTimes === 0) {
     logger.logPrompt(prompt);
   }
   askFunctionCalledTimes++;
-  sendOpenApiRequest(prompt)
+  sendOpenApiRequest(chatHistory)
     .then((data) => {
+      chatHistory.push({
+        role: "system",
+        content: data.choices[0].message.content,
+      });
       logger.logResponse(data.choices[0].message.content);
       rl.question(`${appGlobalConsts.colorizedUserPromptPrefix} : `, (newPrompt) => {
         newPrompt.toLowerCase() === 'exit' ? process.exit(0) : ask(newPrompt);
