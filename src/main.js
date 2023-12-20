@@ -1,12 +1,43 @@
 import "dotenv/config";
 import fs from "fs";
+import readline from "readline";
 import { sendOpenApiRequest } from "./request-helper.js";
 import { logger } from "./utilities/logger.js";
+import { appGlobalConsts } from "./consts/app-global-consts.js";
 
-export const ask = (prompt) => {
-  sendOpenApiRequest(prompt)
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+const chatHistory = [];
+
+let askFunctionCalledTimes = 0;
+export const ask = (prompt, interactive) => {
+  chatHistory.push({
+    role: "user",
+    content: prompt,
+  });
+  if (askFunctionCalledTimes === 0) {
+    logger.logPrompt(prompt);
+  }
+  askFunctionCalledTimes++;
+  sendOpenApiRequest(chatHistory)
     .then((data) => {
+      chatHistory.push({
+        role: "system",
+        content: data.choices[0].message.content,
+      });
       logger.logResponse(data.choices[0].message.content);
+      if (!interactive) {
+        process.exit(0);
+      }
+      rl.question(
+        `${appGlobalConsts.colorizedUserPromptPrefix} : `,
+        (newPrompt) => {
+          newPrompt.toLowerCase() === "exit" ? process.exit(0) : ask(newPrompt, interactive);
+        },
+      );
     })
     .catch((error) => {
       logger.logError(JSON.parse(error.message));
