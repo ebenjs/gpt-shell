@@ -16,22 +16,34 @@ The app is a command line client for chat gpt. It allows users to ask gpt questi
 - [Table of Contents](#table-of-contents)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
-  - [Common steps](#common-steps)
-  - [Linux and MacOS](#linux-and-macos)
-  - [Windows](#windows)
+  - [Automatic install on debian based distros](#automatic-install-on-debian-based-distros)
+  - [Manual install from sources](#manual-install-from-sources)
+    - [Common steps](#common-steps)
+    - [Linux and MacOS](#linux-and-macos)
+    - [Windows](#windows)
 - [Usage](#usage)
 - [Configuration](#configuration)
 - [Contributing](#contributing)
 
 ## Prerequisites
 
-Any recent version of nodejs.
+gpt-shell is a command line tool that can be installed on any operating system. However, it requires any recent version of Node.js to be installed.
 
 <!-- Installation section here. -->
 
 ## Installation
 
-### Common steps
+Choose your preferred installation method below. Unix based systems (Linux, macOS) users can install gpt-shell via the command line with the following scripts:
+
+### Automatic install on debian based distros
+
+```bash
+curl -s https://raw.githubusercontent.com/ebenjs/gpt-shell/develop/install-scripts/install-script-deb.sh | sudo bash bash
+```
+
+### Manual install from sources
+
+#### Common steps
 
 ```bash
 git clone https://github.com/ebenjs/gpt-shell.git
@@ -39,15 +51,15 @@ cd gpt-shell
 npm install
 ```
 
-### Linux and MacOS
+#### Linux and MacOS
 
 ```bash
 cp .env.example .env
 sudo chmod +x index.js
-ln -s "$(pwd)/index.js" /usr/local/bin/gptshell
+ln -s "$(pwd)/index.js" /usr/local/bin/gpts
 ```
 
-### Windows
+#### Windows
 
 On windows, first you need to copy the `.env.example` file to `.env`.
 
@@ -55,7 +67,7 @@ On windows, first you need to copy the `.env.example` file to `.env`.
 copy .env.example .env
 ```
 
-Then you need to create a `gptshell.cmd` file in `C:\Windows\System32` with the following content:
+Then you need to create a `gpts.cmd` file in `C:\Windows\System32` with the following content:
 
 ```cmd
 @echo off
@@ -67,13 +79,13 @@ node "C:\path\to\gpt-shell\index.js" %*
 ## Usage
 
 ```bash
-gptshell ask -p "What is the meaning of life?"
+gpts ask -p "What is the meaning of life?"
 ```
 
 ## Configuration
 
 ```bash
-gptshell config -k YOUR_API_KEY -m MODEL_NAME -u API_URL
+gpts config -k YOUR_API_KEY -m MODEL_NAME -u API_URL
 ```
 
 `-k` or `--key` is your openai api key.  
