@@ -38,7 +38,7 @@ Choose your preferred installation method below. Unix based systems (Linux, macO
 ### Automatic install on debian based distros
 
 ```bash
-curl -s https://raw.githubusercontent.com/ebenjs/gpt-shell/develop/install-scripts/install-script-deb.sh | sudo bash bash
+curl -s https://raw.githubusercontent.com/ebenjs/gpt-shell/develop/install-scripts/install-script-deb.sh | sudo bash
 ```
 
 ### Manual install from sources
