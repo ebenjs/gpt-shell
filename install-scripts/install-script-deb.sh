@@ -3,7 +3,7 @@ set -e
 
 echo "Downloading binaries"
 
-curl https://codeload.github.com/gist/8c298d51c599794ddcf5cdfc86012345/zip/6408d6c9c693ac30e0c4c0c19a4f42c0b869d84d --output gpt-shell-archive.zip
+curl https://codeload.github.com/gist/8c298d51c599794ddcf5cdfc86012345/zip/cc438ea8e60832c73617e9bb763b2d21a3645cb5 --output gpt-shell-archive.zip
 
 if ! which unzip > /dev/null; then
     echo "Installing unzip"
@@ -17,7 +17,7 @@ if [ ! -d "/usr/local/bin/gpts" ]; then
     sudo mkdir /usr/local/bin/gpts
 fi
 
-sudo mv ./gpt-shell-archive/8c298d51c599794ddcf5cdfc86012345-6408d6c9c693ac30e0c4c0c19a4f42c0b869d84d/* /usr/local/bin/gpts
+sudo mv ./gpt-shell-archive/8c298d51c599794ddcf5cdfc86012345-cc438ea8e60832c73617e9bb763b2d21a3645cb5/* /usr/local/bin/gpts
 sudo mv /usr/local/bin/gpts/script.js /usr/local/bin/gpts/gpts
 
 sudo chmod +x /usr/local/bin/gpts/gpts
