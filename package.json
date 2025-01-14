@@ -26,7 +26,7 @@
   "author": "ebenjs",
   "license": "ISC",
   "dependencies": {
-    "chalk": "^5.3.0",
+    "chalk": "^5.4.1",
     "dotenv": "^16.3.2",
     "winston": "^3.12.0",
     "yargs": "^17.7.2"
